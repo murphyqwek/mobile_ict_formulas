@@ -4,6 +4,9 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
+from kivy.uix.widget import Widget
+from kivy.core.window import Window
+from kivy.properties import ObjectProperty
 
 class MainGrid(GridLayout):
     def __init__(self, **kwargs):
@@ -29,26 +32,26 @@ class MainGrid(GridLayout):
 
         #input_filter="float" - TextInput с таким атрибутом будет принимать только цифры и точка
 
-        self.inside.add_widget(Label(text="Введите N:"))
-        self.N_input = TextInput(multiline=False,input_filter="float")
+        self.inside.add_widget(Label(text="Введите N:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.N_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в N_input, будет вызываться функция N_input_update
         self.N_input.bind(text=self.N_input_update)
         self.inside.add_widget(self.N_input)
 
-        self.inside.add_widget(Label(text="Введите i:"))
-        self.i_input = TextInput(multiline=False,input_filter="float")
+        self.inside.add_widget(Label(text="Введите i:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.i_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в i_input, будет вызываться функция i_input_update
         self.i_input.bind(text=self.i_input_update)
         self.inside.add_widget(self.i_input)
 
-        self.inside.add_widget(Label(text="Введите I:"))
-        self.I_input = TextInput(multiline=False,input_filter="float")
+        self.inside.add_widget(Label(text="Введите I:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.I_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в I_input, будет вызываться функция I_input_update
         self.I_input.bind(text=self.I_input_update)
         self.inside.add_widget(self.I_input)
 
-        self.inside.add_widget(Label(text="Введите K:"))
-        self.K_input = TextInput(multiline=False,input_filter="float")
+        self.inside.add_widget(Label(text="Введите K:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.K_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в K_input, будет вызываться функция K_input_update
         self.K_input.bind(text=self.K_input_update)        
         self.inside.add_widget(self.K_input)
@@ -56,7 +59,7 @@ class MainGrid(GridLayout):
         self.add_widget(self.inside)
 
         #Лейбл с копирайтом, который находится на MainGrid
-        self.add_widget(Label(text="Сделано Арсением Стариковы vk@sv_n_nr", color=(200, 200, 200, 1)))
+        self.add_widget(Label(text="Сделано Арсением Стариковы vk@sv_n_nr", color=(200, 200, 200, 1), size_hint_y= 0.1))
 
     #В функциях N_input, i_input, I_input, K_input, мы только блокируем для пользователя Text_input. Все вычисления проходят в функции update_variables. 
     #Благодаря блокировки TextInput, мы понимаем, какие переменные мы должны принять за исходные
@@ -295,12 +298,20 @@ class MainGrid(GridLayout):
         
         self.update_text_input()
 
+#Разобраться с kivy language и переделать приложение 
+class MainGrid_(Widget):
+    n_input = ObjectProperty(None)
+    i_input = ObjectProperty(None)
+    ii_input = ObjectProperty(None)
+    k_input = ObjectProperty(None)
 
-class MainApp(App):
+class infaApp(App):
     def build(self):
+        #Установка цвета заднего фона
+        Window.clearcolor = (1, 1, 1, 1)
         #Функция, которая создаёт все uix объекты
         return MainGrid()
 
 if __name__ == '__main__':
     #Создаём объект приложения и запускаем его
-    MainApp().run()
+    infaApp().run()
