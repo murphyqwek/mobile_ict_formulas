@@ -1,0 +1,43 @@
+<MainGrid>
+    n_input: N_input
+    i_input: i_input
+    ii_input: I_input
+    k_input: K_input
+
+    GridLayout:
+        cols: 1
+        rows: 3
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2
+            rows: 4
+
+            Label:
+                text: "Введите N:"
+            TextInput:
+                id: N_input
+                multiline: False
+            Label:
+                text: "Введите i:"
+            TextInput:
+                id: i_input
+                multiline: False
+                input_filter: "float"
+            Label:
+                text: "Введите I:"
+            TextInput:
+                id: I_input
+                multiline: False
+                input_filter: "float"
+
+            Label:
+                text: "Введите K:"
+            TextInput:
+                id: K_input
+                multiline: False
+                input_filter: "float"     
+        Label:
+            size_hint_y: None
+            height: 50
+            text: "Сделано Арсений Стариковым vk: @sv_v_nr"
