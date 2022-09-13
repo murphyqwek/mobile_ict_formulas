@@ -255,7 +255,7 @@ class MainGrid(GridLayout):
 
             #Если I зависищая переменная или пуста, и K нам известна
             if (self.I == "" or self.I_input.readonly) and self.K != "" and self.i != 0.0:
-                self.I = self.K * self.I
+                self.I = self.K * self.i
             #Если K зависищая переменная или пуста, и I нам известна
             if (self.K == "" or self.K_input.readonly) and self.I != "" and self.i != 0.0:
                 self.K = self.I / self.i
