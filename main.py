@@ -1,3 +1,4 @@
+from faulthandler import disable
 from math import log2
 import kivy
 from kivy.app import App
@@ -83,12 +84,12 @@ class MainGrid(GridLayout):
                     self.N = float(value)
 
                     #Перменная i зависит только N, мы блокируем i_input
-                    self.i_input.readonly = True
+                    self.i_input.disabled = True
                     
                     #Если нам извества переменная K, то мы блокируем I_input
-                    if self.K_input.text != "" and not self.K_input.readonly: self.I_input.readonly = True
+                    if self.K_input.text != "" and not self.K_input.disabled: self.I_input.disabled = True
                     #Если нам извества переменная I, то мы блокируем K_input
-                    if self.I_input.text != "" and not self.I_input.readonly: self.K_input.readonly = True
+                    if self.I_input.text != "" and not self.I_input.disabled: self.K_input.disabled = True
 
                     self.block = True
                     self.update_variables()
@@ -98,16 +99,16 @@ class MainGrid(GridLayout):
                 self.N = ""
 
                 self.i = ""
-                self.i_input.readonly = False
+                self.i_input.disabled = False
 
                 #Если нам известная переменная K, и она была введена пользователем, то I мы можем стереть
-                if self.K_input.text != "" and self.K_input.readonly:
+                if self.K_input.text != "" and self.K_input.disabled:
                     self.I = ""
-                    self.I_input.readonly = False
+                    self.I_input.disabled = False
                 #Если нам известная переменная I, и она была введена пользователем, то I мы можем стереть
-                if self.I_input.text != "" and self.I_input.readonly:
+                if self.I_input.text != "" and self.I_input.disabled:
                     self.K = ""
-                    self.K_input.readonly = False
+                    self.K_input.disabled = False
 
                 self.update_text_input()             
 
@@ -126,12 +127,12 @@ class MainGrid(GridLayout):
                     self.i = float(value)
 
                     #Перменная N зависит только i, мы блокируем N_input
-                    self.N_input.readonly = True
+                    self.N_input.disabled = True
                     
                     #Если нам извества переменная K, то мы блокируем I_input
-                    if self.K_input.text != "" and not self.K_input.readonly: self.I_input.readonly = True
+                    if self.K_input.text != "" and not self.K_input.disabled: self.I_input.disabled = True
                     #Если нам извества переменная I, то мы блокируем K_input
-                    if self.I_input.text != "" and not self.I_input.readonly: self.K_input.readonly = True
+                    if self.I_input.text != "" and not self.I_input.disabled: self.K_input.disabled = True
 
                     self.block = True
                     self.update_variables()
@@ -141,16 +142,16 @@ class MainGrid(GridLayout):
                 self.i = ""
 
                 self.N = ""
-                self.N_input.readonly = False
+                self.N_input.disabled = False
 
                 #Если нам известная переменная K, и она была введена пользователем, то I мы можем стереть
-                if self.K_input.text != "" and self.K_input.readonly:
+                if self.K_input.text != "" and self.K_input.disabled:
                     self.I = ""
-                    self.I_input.readonly = False
+                    self.I_input.disabled = False
                 #Если нам известная переменная I, и она была введена пользователем, то K мы можем стереть
-                if self.I_input.text != "" and self.I_input.readonly:
+                if self.I_input.text != "" and self.I_input.disabled:
                     self.K = ""
-                    self.K_input.readonly = False
+                    self.K_input.disabled = False
 
                 self.update_text_input()    
     
@@ -169,12 +170,12 @@ class MainGrid(GridLayout):
                     self.I = float(value)
 
                     #Если нам известна переменная i, мы можем посчитать переменную K, поэтому мы блокируем поле K_input для пользователя
-                    if self.i_input.text != "" and not self.K_input.readonly: 
-                        self.K_input.readonly = True
+                    if self.i_input.text != "" and not self.K_input.disabled and self.K_input.text == "": 
+                        self.K_input.disabled = True
                     #Если нам известна переменная K, мы можем посчитать переменную i и N, поэтому мы блокируем поля i_input и N_input для пользователя
-                    if self.i_input.text == "" and not self.K_input.readonly and self.K_input.text != "":
-                        self.i_input.readonly = True
-                        self.N_input.readonly = True
+                    if self.i_input.text == "" and not self.K_input.disabled and self.K_input.text != "":
+                        self.i_input.disabled = True
+                        self.N_input.disabled = True
 
                     self.block = True
                     self.update_variables()
@@ -185,15 +186,15 @@ class MainGrid(GridLayout):
 
                 if self.K_input.text != "":
                     #Если переменная K не была исходной(то есть польхователь её не вводил), мы её стираем
-                    if self.K_input.readonly:
+                    if self.K_input.disabled:
                         self.K = ""
-                        self.K_input.readonly = False
+                        self.K_input.disabled = False
                     #Если переменная K была исходной(то есть польхователь её не вводил), мы стираем N и i
                     else:
                         self.N = ""
                         self.i = ""
-                        self.N_input.readonly = False
-                        self.i_input.readonly = False
+                        self.N_input.disabled = False
+                        self.i_input.disabled = False
                 
                 self.update_text_input()
             
@@ -212,12 +213,12 @@ class MainGrid(GridLayout):
                     self.K = float(value)
 
                     #Если нам известна переменная i, мы можем посчитать переменную I, поэтому мы блокируем поле I_input для пользователя
-                    if self.i_input.text != "" and not self.I_input.readonly: 
-                        self.I_input.readonly = True
+                    if self.i_input.text != "" and not self.I_input.disabled and self.I_input.text == "": 
+                        self.I_input.disabled = True
                     #Если нам известна переменная I, мы можем посчитать переменную i и N, поэтому мы блокируем поля i_input и N_input для пользователя
-                    if self.i_input.text == "" and not self.I_input.readonly and self.I_input.text != "":
-                        self.i_input.readonly = True
-                        self.N_input.readonly = True
+                    if self.i_input.text == "" and not self.I_input.disabled and self.I_input.text != "":
+                        self.i_input.disabled = True
+                        self.N_input.disabled = True
 
                     self.block = True
                     self.update_variables() 
@@ -228,15 +229,15 @@ class MainGrid(GridLayout):
 
                 if self.I_input.text != "":
                     #Если переменная I не была исходной(то есть польхователь её не вводил), мы её стираем
-                    if self.I_input.readonly:
+                    if self.I_input.disabled:
                         self.I = ""
-                        self.I_input.readonly = False
+                        self.I_input.disabled = False
                     #Если переменная I была исходной(то есть польхователь её не вводил), мы стираем N и i
                     else:
                         self.N = ""
                         self.i = ""
-                        self.N_input.readonly = False
-                        self.i_input.readonly = False
+                        self.N_input.disabled = False
+                        self.i_input.disabled = False
                 
                 self.update_text_input()
 
@@ -244,64 +245,64 @@ class MainGrid(GridLayout):
         #Обновляем text в Text_Input
         #Важно: если данная переменная является исходной(её ввёл пользователь), то мы не должны обновлять TextInput.
         #Т.к может невохможно будет менять исходные переменные
-        if self.N_input.readonly or self.N == '': self.N_input.text = str(self.N)
-        if self.i_input.readonly or self.i == '': self.i_input.text = str(self.i)
-        if self.I_input.readonly or self.I == '': self.I_input.text = str(self.I)
-        if self.K_input.readonly or self.K == '': self.K_input.text = str(self.K)
+        if self.N_input.disabled or self.N == '': self.N_input.text = str(self.N)
+        if self.i_input.disabled or self.i == '': self.i_input.text = str(self.i)
+        if self.I_input.disabled or self.I == '': self.I_input.text = str(self.I)
+        if self.K_input.disabled or self.K == '': self.K_input.text = str(self.K)
 
-        self.N_label.text = str(self.N_input.readonly)
-        self.i_label.text = str(self.i_input.readonly)
-        self.I_label.text = str(self.I_input.readonly)
-        self.K_label.text = str(self.K_input.readonly)
+        self.N_label.text = str(self.N_input.disabled)
+        self.i_label.text = str(self.i_input.disabled)
+        self.I_label.text = str(self.I_input.disabled)
+        self.K_label.text = str(self.K_input.disabled)
 
     def update_variables(self):
         #Если N является исходной
-        if self.N != "" and not self.N_input.readonly:
+        if self.N != "" and not self.N_input.disabled:
             #i всегда зависит от N, и наоборот
             self.i = log2(self.N)
 
             #log2(N) может равнятся 0, следовательно, i может быть 0, поэтому мы делаем проверку
 
             #Если I зависищая переменная или пуста, и K нам известна
-            if (self.I == "" or self.I_input.readonly) and self.K != "" and self.i != 0.0:
+            if (self.I == "" or self.I_input.disabled) and self.K != "" and self.i != 0.0:
                 self.I = self.K * self.i
             #Если K зависищая переменная или пуста, и I нам известна
-            if (self.K == "" or self.K_input.readonly) and self.I != "" and self.i != 0.0:
+            if (self.K == "" or self.K_input.disabled) and self.I != "" and self.i != 0.0:
                 self.K = self.I / self.i
 
         #Если i является исходной
-        elif self.i != "" and not self.i_input.readonly:
+        elif self.i != "" and not self.i_input.disabled:
             #i всегда зависит от N, и наоборот
             self.N = 2 ** self.i
 
             #log2(N) может равнятся 0, следовательно, i может быть 0, поэтому мы делаем проверку
 
             #Если I зависищая переменная или пуста, и K нам известна
-            if (self.I == "" or self.I_input.readonly) and self.K != "" and self.i != 0.0:
+            if (self.I == "" or self.I_input.disabled) and self.K != "" and self.i != 0.0:
                 self.I = self.K * self.i
             #Если K зависищая переменная или пуста, и I нам известна
-            if (self.K == "" or self.K_input.readonly) and self.I != "" and self.i != 0.0:
+            if (self.K == "" or self.K_input.disabled) and self.I != "" and self.i != 0.0:
                 self.K = self.I / self.i
 
         #Если I является исходной
-        elif self.I != "" and not self.I_input.readonly:
+        elif self.I != "" and not self.I_input.disabled:
             #Если K зависищая переменная или пуста, и i нам известна
-            if self.K == "" or self.K_input.readonly:
+            if self.K == "" or self.K_input.disabled:
                 if self.i != "" and self.i != 0.0: self.K = self.I / self.i
             #Если K является исходной
             else:
-                if self.i == "" or (self.i_input.readonly and self.N_input.readonly):
+                if self.i == "" or (self.i_input.disabled and self.N_input.disabled):
                     self.i = self.I / self.K
                     self.N = 2 ** self.i
 
         #Если K является исходной
-        elif self.K != "" and not self.K_input.readonly:
+        elif self.K != "" and not self.K_input.disabled:
             #Если I зависищая переменная или пуста, и i нам известна
-            if self.I == "" or self.I_input.readonly:
+            if self.I == "" or self.I_input.disabled:
                 if self.i != "" and self.i != 0.0: self.I = self.K * self.i
             #Если I является исходной
             else:
-                if self.i == "" or (self.i_input.readonly and self.N_input.readonly):
+                if self.i == "" or (self.i_input.disabled and self.N_input.disabled):
                     self.i = self.I / self.K
                     self.N = 2 ** self.i 
         
