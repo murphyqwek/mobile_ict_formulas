@@ -250,11 +250,6 @@ class MainGrid(GridLayout):
         if self.I_input.disabled or self.I == '': self.I_input.text = str(self.I)
         if self.K_input.disabled or self.K == '': self.K_input.text = str(self.K)
 
-        self.N_label.text = str(self.N_input.disabled)
-        self.i_label.text = str(self.i_input.disabled)
-        self.I_label.text = str(self.I_input.disabled)
-        self.K_label.text = str(self.K_input.disabled)
-
     def update_variables(self):
         #Если N является исходной
         if self.N != "" and not self.N_input.disabled:
