@@ -172,7 +172,7 @@ class MainGrid(GridLayout):
                     if self.i_input.text != "" and not self.K_input.readonly: 
                         self.K_input.readonly = True
                     #Если нам известна переменная K, мы можем посчитать переменную i и N, поэтому мы блокируем поля i_input и N_input для пользователя
-                    if self.i_input.text == "" and self.K_input.readonly:
+                    if self.i_input.text == "" and not self.K_input.readonly:
                         self.i_input.readonly = True
                         self.N_input.readonly = True
 
@@ -215,7 +215,7 @@ class MainGrid(GridLayout):
                     if self.i_input.text != "" and not self.I_input.readonly: 
                         self.I_input.readonly = True
                     #Если нам известна переменная I, мы можем посчитать переменную i и N, поэтому мы блокируем поля i_input и N_input для пользователя
-                    if self.i_input.text == "" and self.I_input.readonly:
+                    if self.i_input.text == "" and not self.I_input.readonly:
                         self.i_input.readonly = True
                         self.N_input.readonly = True
 
@@ -308,11 +308,11 @@ class MainGrid(GridLayout):
         self.update_text_input()
 
 #Разобраться с kivy language и переделать приложение 
-class MainGrid_(Widget):
+"""class MainGrid_(Widget):
     n_input = ObjectProperty(None)
     i_input = ObjectProperty(None)
     ii_input = ObjectProperty(None)
-    k_input = ObjectProperty(None)
+    k_input = ObjectProperty(None)"""
 
 class infaApp(App):
     def build(self):
