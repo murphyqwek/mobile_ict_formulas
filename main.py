@@ -172,7 +172,7 @@ class MainGrid(GridLayout):
                     if self.i_input.text != "" and not self.K_input.readonly: 
                         self.K_input.readonly = True
                     #Если нам известна переменная K, мы можем посчитать переменную i и N, поэтому мы блокируем поля i_input и N_input для пользователя
-                    if self.i_input.text == "" and not self.K_input.readonly:
+                    if self.i_input.text == "" and not self.K_input.readonly and self.K_input.text != "":
                         self.i_input.readonly = True
                         self.N_input.readonly = True
 
@@ -215,7 +215,7 @@ class MainGrid(GridLayout):
                     if self.i_input.text != "" and not self.I_input.readonly: 
                         self.I_input.readonly = True
                     #Если нам известна переменная I, мы можем посчитать переменную i и N, поэтому мы блокируем поля i_input и N_input для пользователя
-                    if self.i_input.text == "" and not self.I_input.readonly:
+                    if self.i_input.text == "" and not self.I_input.readonly and self.I_input.text != "":
                         self.i_input.readonly = True
                         self.N_input.readonly = True
 
@@ -249,10 +249,10 @@ class MainGrid(GridLayout):
         if self.I_input.readonly or self.I == '': self.I_input.text = str(self.I)
         if self.K_input.readonly or self.K == '': self.K_input.text = str(self.K)
 
-        #self.N_label.text = str(self.N_input.readonly)
-        #self.i_label.text = str(self.i_input.readonly)
-        #self.I_label.text = str(self.I_input.readonly)
-        #self.K_label.text = str(self.K_input.readonly)
+        self.N_label.text = str(self.N_input.readonly)
+        self.i_label.text = str(self.i_input.readonly)
+        self.I_label.text = str(self.I_input.readonly)
+        self.K_label.text = str(self.K_input.readonly)
 
     def update_variables(self):
         #Если N является исходной
