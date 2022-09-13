@@ -32,25 +32,29 @@ class MainGrid(GridLayout):
 
         #input_filter="float" - TextInput с таким атрибутом будет принимать только цифры и точка
 
-        self.inside.add_widget(Label(text="Введите N:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.N_label = Label(text="Введите N:", color=(0,0,0,1), size_hint=(1, 0.3))
+        self.inside.add_widget(self.N_label)
         self.N_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в N_input, будет вызываться функция N_input_update
         self.N_input.bind(text=self.N_input_update)
         self.inside.add_widget(self.N_input)
 
-        self.inside.add_widget(Label(text="Введите i:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.i_label = Label(text="Введите i:", color=(0,0,0,1), size_hint=(1, 0.3))
+        self.inside.add_widget(self.i_label)
         self.i_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в i_input, будет вызываться функция i_input_update
         self.i_input.bind(text=self.i_input_update)
         self.inside.add_widget(self.i_input)
 
-        self.inside.add_widget(Label(text="Введите I:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.I_label = Label(text="Введите I:", color=(0,0,0,1), size_hint=(1, 0.3))
+        self.inside.add_widget(self.I_label)
         self.I_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в I_input, будет вызываться функция I_input_update
         self.I_input.bind(text=self.I_input_update)
         self.inside.add_widget(self.I_input)
 
-        self.inside.add_widget(Label(text="Введите K:", color=(0,0,0,1), size_hint=(1, 0.3)))
+        self.K_label = Label(text="Введите K:", color=(0,0,0,1), size_hint=(1, 0.3))
+        self.inside.add_widget(self.K_label)
         self.K_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
         #При изменении текста в K_input, будет вызываться функция K_input_update
         self.K_input.bind(text=self.K_input_update)        
@@ -244,6 +248,11 @@ class MainGrid(GridLayout):
         if self.i_input.readonly or self.i == '': self.i_input.text = str(self.i)
         if self.I_input.readonly or self.I == '': self.I_input.text = str(self.I)
         if self.K_input.readonly or self.K == '': self.K_input.text = str(self.K)
+
+        #self.N_label.text = str(self.N_input.readonly)
+        #self.i_label.text = str(self.i_input.readonly)
+        #self.I_label.text = str(self.I_input.readonly)
+        #self.K_label.text = str(self.K_input.readonly)
 
     def update_variables(self):
         #Если N является исходной
