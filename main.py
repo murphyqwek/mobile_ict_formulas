@@ -1,4 +1,3 @@
-from faulthandler import disable
 from math import log2
 import kivy
 from kivy.app import App
