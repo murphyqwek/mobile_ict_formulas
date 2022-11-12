@@ -32,30 +32,40 @@ class MainGrid(GridLayout):
 
         #input_filter="float" - TextInput с таким атрибутом будет принимать только цифры и точка
 
-        self.N_label = Label(text="Введите N:", color=(0,0,0,1), size_hint=(1, 0.3))
+        self.N_label = Label(text="Введите N:", color=(0,0,0,1), size_hint=(1, 0.3), font_size=40)
         self.inside.add_widget(self.N_label)
-        self.N_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
+        self.N_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3), font_size=50)
+        self.N_input.padding_y = [self.N_input.height / 2.0 - (self.N_input.line_height / 2.0) * len(self.N_input._lines) - 10, 0]
+
         #При изменении текста в N_input, будет вызываться функция N_input_update
         self.N_input.bind(text=self.N_input_update)
         self.inside.add_widget(self.N_input)
 
-        self.i_label = Label(text="Введите i:", color=(0,0,0,1), size_hint=(1, 0.3))
+
+        self.i_label = Label(text="Введите i:", color=(0,0,0,1), size_hint=(1, 0.3), font_size = 40)
         self.inside.add_widget(self.i_label)
-        self.i_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
+        self.i_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3), font_size = 40)
+        self.i_input.padding_y = [self.i_input.height / 2.0 - (self.i_input.line_height / 2.0) * len(self.i_input._lines) - 10, 0]
+
         #При изменении текста в i_input, будет вызываться функция i_input_update
         self.i_input.bind(text=self.i_input_update)
         self.inside.add_widget(self.i_input)
 
-        self.I_label = Label(text="Введите I:", color=(0,0,0,1), size_hint=(1, 0.3))
+
+        self.I_label = Label(text="Введите I:", color=(0,0,0,1), size_hint=(1, 0.3), font_size = 40)
         self.inside.add_widget(self.I_label)
-        self.I_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
+        self.I_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3), font_size = 40)
+        self.I_input.padding_y = [self.I_input.height / 2.0 - (self.I_input.line_height / 2.0) * len(self.I_input._lines) - 10, 0]
+
         #При изменении текста в I_input, будет вызываться функция I_input_update
         self.I_input.bind(text=self.I_input_update)
         self.inside.add_widget(self.I_input)
 
-        self.K_label = Label(text="Введите K:", color=(0,0,0,1), size_hint=(1, 0.3))
+
+        self.K_label = Label(text="Введите K:", color=(0,0,0,1), size_hint=(1, 0.3), font_size = 40)
         self.inside.add_widget(self.K_label)
-        self.K_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3))
+        self.K_input = TextInput(multiline=False,input_filter="float", size_hint=(1, 0.3), font_size = 40)
+        self.K_input.padding_y = [self.K_input.height / 2.0 - (self.K_input.line_height / 2.0) * len(self.K_input._lines) - 10, 0]
         #При изменении текста в K_input, будет вызываться функция K_input_update
         self.K_input.bind(text=self.K_input_update)        
         self.inside.add_widget(self.K_input)
