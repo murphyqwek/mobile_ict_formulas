@@ -8,9 +8,9 @@ from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivy.properties import ObjectProperty
 
-class MainGrid(GridLayout):
+class InfaGrid(Widget):
     def __init__(self, **kwargs):
-        super(MainGrid, self).__init__(**kwargs)
+        super(InfaGrid, self).__init__(**kwargs)
         
         self.N = ""
         self.i = ""
@@ -73,7 +73,7 @@ class MainGrid(GridLayout):
         self.add_widget(self.inside)
 
         #Лейбл с копирайтом, который находится на MainGrid
-        self.add_widget(Label(text="Сделано Арсением Стариковы vk@sv_n_nr", color=(200, 200, 200, 1), size_hint_y= 0.1))
+        self.add_widget(Label(text="Сделано Арсением Стариковым vk@sv_n_nr", color=(200, 200, 200, 1), size_hint_y= 0.1))
 
     #В функциях N_input, i_input, I_input, K_input, мы только блокируем для пользователя Text_input. Все вычисления проходят в функции update_variables. 
     #Благодаря блокировки TextInput, мы понимаем, какие переменные мы должны принять за исходные
@@ -312,6 +312,9 @@ class MainGrid(GridLayout):
         
         self.update_text_input()
 
+class Inf_ob_Grid(Widget):
+    pass
+
 #Разобраться с kivy language и переделать приложение 
 """class MainGrid_(Widget):
     n_input = ObjectProperty(None)
@@ -321,10 +324,8 @@ class MainGrid(GridLayout):
 
 class infaApp(App):
     def build(self):
-        #Установка цвета заднего фона
         Window.clearcolor = (1, 1, 1, 1)
-        #Функция, которая создаёт все uix объекты
-        return MainGrid()
+        return Inf_ob_Grid()
 
 if __name__ == '__main__':
     #Создаём объект приложения и запускаем его
